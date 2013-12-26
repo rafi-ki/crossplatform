@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+    <title>My Page</title>
+    <meta name="start" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css">
+    <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
+	<script src="crossplatform.js"></script>
+</head>
+<body onLoad=getName();>
+    <div data-role="page">
+ 
+        <div data-role="header">
+            <h1>Welcome</h1>
+        </div><!-- /header -->
+ 
+        <div data-role="content">
+            <p id="greetingParagraph">Hello</p>
+        </div><!-- /content -->
+		
+		
+		<div data-role="collapsible" data-iconpos="right" id="changename" style="margin: 15px 15px 15px 15px">
+			<h4> change name </h4>
+			<label for="name">Name:</label>
+			<input type="text" data-clear-btn="true" data-inline="true" name="name" id="name" value="" style="max-width: 100px; display:inline">
+			<input type="button" data-inline="true" value="save" onClick=saveName();>
+			<p id="errorMsg" style="color:red; display:none"></p>
+		</div>
+		<input type="button" value="continue">
+		
+		
+ 
+        <div data-role="footer">
+            <h4>My Footer</h4>
+        </div><!-- /footer -->
+ 
+    </div><!-- /page -->
+</body>
+</html>
