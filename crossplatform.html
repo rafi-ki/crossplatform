@@ -9,11 +9,7 @@
 	<script src="crossplatform.js"></script>
 </head>
 <body onLoad=updateGreeting();>
-    <div data-role="page">
- 
-        <div data-role="header">
-            <h1>Welcome</h1>
-        </div><!-- /header -->
+    <div data-role="page" id="start">
  
         <div data-role="content">
             <p id="greetingParagraph">Hello</p>
@@ -27,14 +23,22 @@
 			<input type="button" data-inline="true" value="save" onClick=saveName();>
 			<p id="errorMsg" style="color:red; display:none"></p>
 		</div>
-		<input type="button" value="continue">
-		
-		
- 
-        <div data-role="footer">
-            <h4>My Footer</h4>
-        </div><!-- /footer -->
+		<input type="button" value="continue" onClick=window.location='#listview';>
  
     </div><!-- /page -->
+	
+	<div data-role="page" id="listview">
+		<div style="margin: 15px 15px 15px 15px">
+			
+			<input type="text" data-clear-btn="true" data-inline="true" name="moviename" id="moviename" value="Movie" style="max-width: 200px; display:inline">
+			<input type="button" data-inline="true" value="search">
+		</div>
+		
+		<ul data-role="listview" data-inset="true">
+			<li>bla</li>
+			<li>foo</li>
+		</ul>
+		<input type="button" value="back" onClick=window.location='#start';>
+	</div>
 </body>
 </html>
