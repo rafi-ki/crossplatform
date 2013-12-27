@@ -1,4 +1,4 @@
-function getName()
+function updateGreeting()
 {
 	var name = localStorage.name;
 	var result = "Hello, ";
@@ -19,7 +19,7 @@ function saveName()
 	{
 		localStorage.name = name;
 		errorPar.style.display="none";
-		getName();
+		updateGreeting();
 	}
 	else
 	{
