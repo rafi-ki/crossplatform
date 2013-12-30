@@ -57,12 +57,15 @@ function searchMovie()
         // Javascript function JSON.parse to parse JSON data
         var jsonObj = JSON.parse(http_request.responseText)[0];
 
-		document.getElementById("movietitle").innerHTML = jsonObj.title;
-		addListitems(jsonObj.actors);
-        // jsonObj variable now contains the data structure and can
-        // be accessed as jsonObj.name and jsonObj.country.
-        //document.getElementById("Name").innerHTML =  jsonObj.name;
-        //document.getElementById("Country").innerHTML = jsonObj.country;
+		if (jsonObj == undefined)
+		{
+			addNotAvailableItem();
+		}
+		else
+		{
+			document.getElementById("movietitle").innerHTML = jsonObj.title;
+			addListitems(jsonObj.actors);
+		}
       }
    }
    http_request.open("GET", data_file, true);
@@ -72,11 +75,28 @@ function searchMovie()
 function addListitems(actors)
 {
 	var list = document.getElementById("actorslist");
-	var out = document.getElementById("output");
+	list.innerHTML=""; // clean list view
 	for (i=0; i<actors.length; i++)
 	{
 		var actor = document.createElement('li');
-		actor.appendChild(document.createTextNode(actors[i]));
+		var anchor = document.createElement('a');
+		anchor.attributeName = "href=\"#\"";
+		anchor.appendChild(document.createTextNode(actors[i]));
+		actor.appendChild(anchor);
 		list.appendChild(actor);
 	}
+	
+	$("#actorslist").listview("refresh");
+}
+
+function addNotAvailableItem()
+{
+	var list = document.getElementById("actorslist");
+	list.innerHTML=""; // clean list view
+	
+	var actor = document.createElement('li');
+	actor.appendChild(document.createTextNode('No Actors available'));
+	list.appendChild(actor);
+	
+	$("#actorslist").listview("refresh");
 }
