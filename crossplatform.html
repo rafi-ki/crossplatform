@@ -31,12 +31,14 @@
 		<div style="margin: 15px 15px 15px 15px">
 			
 			<input type="text" data-clear-btn="true" data-inline="true" name="moviename" id="moviename" value="Movie" style="max-width: 200px; display:inline">
-			<input type="button" data-inline="true" value="search">
+			<input type="button" data-inline="true" value="search" onClick=searchMovie();>
+			<div id="movietitle" style="font-weight:bold">
+			Title
+			</div>
 		</div>
 		
-		<ul data-role="listview" data-inset="true">
-			<li>bla</li>
-			<li>foo</li>
+		<ul id="actorslist" data-role="listview" data-inset="true">
+			<li>No Actors available</li>
 		</ul>
 		<input type="button" value="back" onClick=window.location='#start';>
 	</div>
