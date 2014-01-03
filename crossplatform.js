@@ -64,7 +64,7 @@ function searchMovie()
 		else
 		{
 			document.getElementById("movietitle").innerHTML = jsonObj.title;
-			addListitems(jsonObj.actors);
+			addListitems(jsonObj.actors, jsonObj.imdb_url);
 		}
       }
    }
@@ -72,7 +72,7 @@ function searchMovie()
    http_request.send();
 }
 
-function addListitems(actors)
+function addListitems(actors, movieurl)
 {
 	var list = document.getElementById("actorslist");
 	list.innerHTML=""; // clean list view
@@ -80,13 +80,17 @@ function addListitems(actors)
 	{
 		var actor = document.createElement('li');
 		var anchor = document.createElement('a');
-		anchor.attributeName = "href=\"#\"";
+		anchor.attributeName = "href=\"#\" onClick=goToUrl(" + movieurl + ")";
 		anchor.appendChild(document.createTextNode(actors[i]));
 		actor.appendChild(anchor);
 		list.appendChild(actor);
 	}
 	
 	$("#actorslist").listview("refresh");
+	
+	$("#actorslist").children('li').on('click', function () {
+		goToUrl(movieurl);
+	});
 }
 
 function addNotAvailableItem()
@@ -99,4 +103,9 @@ function addNotAvailableItem()
 	list.appendChild(actor);
 	
 	$("#actorslist").listview("refresh");
+}
+
+function goToUrl(movieurl)
+{
+	window.location.href = movieurl;
 }
