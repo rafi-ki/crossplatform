@@ -44,13 +44,12 @@
 	</div>
 	
 	<div data-role="page" id="actorinfo">
-	<div id="actorname">
-		Name of actor
-	</div>
-	<div id="actorage">
-		Age of actor
-	</div>
-	<input type="button" value="back to list" onClick=window.location='#listview';>
+	<button  class="ui-btn" data-icon="arrow-l" data-theme="b" onClick=window.location='#listview';>
+		<div id="actorname">Name of actor</div>
+	</button>
+	
+	<button class="ui-btn" onClick= searchGoogleForActor();> search Google for actor</button>
+	<button class="ui-btn" onClick= gotoMovieUrl();>to IMDB of the Movie</button>
 	</div>
 </body>
 </html>

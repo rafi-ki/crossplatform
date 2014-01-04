@@ -1,3 +1,4 @@
+var globalmovieurl="http://www.imdb.com";
 function updateGreeting()
 {
 	var name = localStorage.name;
@@ -74,13 +75,14 @@ function searchMovie()
 
 function addListitems(actors, movieurl)
 {
+	globalmovieurl = movieurl;
 	var list = document.getElementById("actorslist");
 	list.innerHTML=""; // clean list view
 	for (i=0; i<actors.length; i++)
 	{
 		var actor = document.createElement('li');
 		var anchor = document.createElement('a');
-		anchor.attributeName = "href=\"#\" onClick=goToUrl(" + movieurl + ")";
+		anchor.attributeName = "href=\"#\"";
 		anchor.appendChild(document.createTextNode(actors[i]));
 		actor.appendChild(anchor);
 		list.appendChild(actor);
@@ -89,7 +91,8 @@ function addListitems(actors, movieurl)
 	$("#actorslist").listview("refresh");
 	
 	$("#actorslist").children('li').on('click', function () {
-		goToUrl(movieurl);
+		window.location='#actorinfo';
+		document.getElementById("actorname").innerHTML = this.firstChild.firstChild.innerHTML;
 	});
 }
 
@@ -105,7 +108,9 @@ function addNotAvailableItem()
 	$("#actorslist").listview("refresh");
 }
 
-function goToUrl(movieurl)
-{
-	window.location.href = movieurl;
+function gotoMovieUrl(){
+	window.location=globalmovieurl;
+}
+function searchGoogleForActor(){
+	window.location="http://www.google.com/search?q="+document.getElementById("actorname").firstChild.innerHTML;
 }
