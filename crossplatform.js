@@ -92,6 +92,7 @@ function addListitems(actors, movieurl)
 	
 	$("#actorslist").children('li').on('click', function () {
 		window.location='#actorinfo';
+		$('#actorname2').val(this.firstChild.firstChild.firstChild.innerHTML);
 		document.getElementById("actorname").innerHTML = this.firstChild.firstChild.innerHTML;
 	});
 }
@@ -112,5 +113,5 @@ function gotoMovieUrl(){
 	window.location=globalmovieurl;
 }
 function searchGoogleForActor(){
-	window.location="http://www.google.com/search?q="+document.getElementById("actorname").firstChild.innerHTML;
+	window.location="http://www.google.com/search?q="+$('#actorname2').val();
 }
